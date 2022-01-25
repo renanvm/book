@@ -20,6 +20,8 @@ class BookArchTests {
             .definedBy("br.com.renan.book.domain")
             .layer("Repository")
             .definedBy("br.com.renan.book.repository")
+            .layer("Service")
+            .definedBy("br.com.renan.book.service")
             .layer("Resource")
             .definedBy("br.com.renan.book.resource")
             .layer("Config")
@@ -27,7 +29,7 @@ class BookArchTests {
 
 
         val rule: ArchRule = layeredArch
-            .whereLayer("Repository").mayOnlyBeAccessedByLayers("Resource", "Config")
+            .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service", "Config")
 
         rule.check(importedClasses)
     }
@@ -36,6 +38,6 @@ class BookArchTests {
     fun repositoryOnlyHaveDependentInResourceOrRepository(importedClasses: JavaClasses) {
         val rule: ArchRule = ArchRuleDefinition.classes()
             .that().resideInAPackage("..repository..")
-            .should().onlyHaveDependentClassesThat().resideInAnyPackage("..repository..", "..resource..")
+            .should().onlyHaveDependentClassesThat().resideInAnyPackage("..repository..", "..service..")
     }
 }

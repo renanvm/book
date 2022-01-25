@@ -1,36 +1,36 @@
 package br.com.renan.book.resource
 
 import br.com.renan.book.domain.Book
-import br.com.renan.book.repository.BookRepository
+import br.com.renan.book.service.BookService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/books")
-class BookResource(var bookRepository: BookRepository) {
+class BookResource(val bookService: BookService) {
 
     @GetMapping()
     fun getAllBooks(): List<Book> {
-        return bookRepository.findAll();
+        return bookService.findAll();
     }
 
     @PostMapping
-    fun saveBook(@RequestBody book: Book) {
-        bookRepository.save(book)
+    fun createBook(@RequestBody book: Book) {
+        bookService.saveOrUpdate(book)
     }
 
     @PutMapping
     fun updateBook(@RequestBody book: Book) {
-        bookRepository.save(book)
+        bookService.saveOrUpdate(book)
     }
 
     @GetMapping("/{id}")
     fun getBookById(@PathVariable id: Long): Book {
-        return bookRepository.findById(id).get()
+        return bookService.findById(id).get()
     }
 
     @DeleteMapping("/{id}")
     fun deleteBookById(@PathVariable id: Long) {
-        bookRepository.deleteById(id)
+        bookService.deleteById(id)
     }
 
 }
