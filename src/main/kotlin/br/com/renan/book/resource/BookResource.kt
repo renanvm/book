@@ -1,10 +1,12 @@
-package br.com.renan.book
+package br.com.renan.book.resource
 
+import br.com.renan.book.domain.Book
+import br.com.renan.book.repository.BookRepository
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/books")
-class BookController(var bookRepository: BookRepository) {
+class BookResource(var bookRepository: BookRepository) {
 
     @GetMapping()
     fun getAllBooks(): List<Book> {

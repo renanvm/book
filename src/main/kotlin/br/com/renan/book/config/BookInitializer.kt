@@ -1,5 +1,7 @@
-package br.com.renan.book
+package br.com.renan.book.config
 
+import br.com.renan.book.domain.Book
+import br.com.renan.book.repository.BookRepository
 import com.github.javafaker.Faker
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component

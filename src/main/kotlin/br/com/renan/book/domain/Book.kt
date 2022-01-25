@@ -1,4 +1,4 @@
-package br.com.renan.book
+package br.com.renan.book.domain
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
