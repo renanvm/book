@@ -1,6 +1,7 @@
 package br.com.renan.book
 
 import com.tngtech.archunit.core.domain.JavaClasses
+import com.tngtech.archunit.core.importer.ImportOption
 import com.tngtech.archunit.junit.AnalyzeClasses
 import com.tngtech.archunit.junit.ArchTest
 import com.tngtech.archunit.lang.ArchRule
@@ -8,7 +9,7 @@ import com.tngtech.archunit.lang.syntax.ArchRuleDefinition
 import com.tngtech.archunit.library.Architectures
 
 @AnalyzeClasses(
-    packages = ["br.com.renan.book"],
+    packages = ["br.com.renan.book"], importOptions = [ImportOption.DoNotIncludeTests::class]
 )
 class BookArchTests {
 
